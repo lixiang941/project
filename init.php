@@ -31,6 +31,6 @@ if(mysqli_connect_errno($link)){
     echo mysqli_connect_error($link);
     exit;
 }
-mysqli_select_db(DB);
-mysqli_set_charset(CHARSET);
+mysqli_select_db($link,DB);
+mysqli_set_charset($link,CHARSET);
 
