@@ -9,9 +9,9 @@
      *
      *  @param $allow_type 文件上传的类型
      *
-     *
      *  @return  $filename 成功返回新的文件名，上传失败返回false
-     *
+     *  
+     *  @author MartinLee lixiang@lampbrother.net
      * */
 
 function upload($name,$dir='./uploads',$allow_type=array('jpg','gif','png','jpeg')){
@@ -80,6 +80,7 @@ function upload($name,$dir='./uploads',$allow_type=array('jpg','gif','png','jpeg
      * @param int       $width      缩放后的宽
      * @param int       $height     缩放后的高
      * @return  没有返回值，函数自动保存缩放好的图片
+     * @author MartinLee lixiang@lampbrother.net
      **/
     function zoom($img_path, $width=200, $height=200){
 
@@ -146,6 +147,8 @@ function upload($name,$dir='./uploads',$allow_type=array('jpg','gif','png','jpeg
  *  
  * @return 返回图片拼接好路径URL
  *
+ * @author MartinLee lixiang@lampbrother.net
+ *
  * */
 function getUrl($img_name,$pre=''){
     //拼接url
@@ -161,7 +164,7 @@ function getUrl($img_name,$pre=''){
 /*
  *  查询数据表
  *
- * @author MartinLee  LiXiang941@163.com
+ * @author MartinLee  lixiang@lampbrother.net
  *
  * @param $sql 这是一个查询的sql语句
  * 
@@ -191,7 +194,7 @@ function getUrl($img_name,$pre=''){
  *
  *  @return  insert 成功返回自增id,失败返回假
  *
- *
+ *  @author MartinLee lixiang@lampbrother.net
  *
  * */
 
@@ -207,4 +210,32 @@ function execute($sql){
 
     return false;
 }
+
+
+
+/*
+ *
+ *  页面跳转函数
+ *  @author MartinLee lixiang@lampbrother.net
+ *  @param $message 操作文本提示
+ *  @param $url     跳转地址
+ *  @param $time    跳转时间
+ *  @reutrn 无返回值 直接输出页面
+ *  
+ *
+ * */
+function redirect($message="操作成功",$url='',$time=3){
+    //如果用户没有传递url这个参数，就让页面跳回上级地址
+    if($url ==''){
+        $url =$_SERVER['HTTP_REFERER'];
+    }
+    echo '<div style="margin:100px auto">';
+    echo $message;
+    echo '</div>';
+
+    //多少秒后跳转到哪里页面
+    echo '<meta http-equiv="refresh" content="'.$time.';url='.$url.'"/>';
+    exit;
+}
+
 
