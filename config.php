@@ -12,4 +12,4 @@
 //字符集
     define('CHARSET','utf8');
 // 表前缀
-    define('PRE','project_');
+    define('PRE','pro_');
