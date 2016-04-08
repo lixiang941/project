@@ -138,3 +138,73 @@ function upload($name,$dir='./uploads',$allow_type=array('jpg','gif','png','jpeg
 
     }
 
+/*
+ * 拼接URL函数
+ * @param $img_name 图片名
+ *
+ * @param $pre  前缀
+ *  
+ * @return 返回图片拼接好路径URL
+ *
+ * */
+function getUrl($img_name,$pre=''){
+    //拼接url
+    $img_url = URL.'uploads/';
+    $img_url .=substr($img_name,0,4).'/';
+    $img_url .=substr($img_name,4,2).'/';
+    $img_url .=substr($img_name,6,2).'/';
+    $img_url .=$pre.$img_name;
+    return $img_url;
+
+}
+
+/*
+ *  查询数据表
+ *
+ * @author MartinLee  LiXiang941@163.com
+ *
+ * @param $sql 这是一个查询的sql语句
+ * 
+ * @return 成功返回数组列表 失败返回false
+ *
+ * */
+    function query($sql){
+        $result =mysqli_query($link,$sql);
+        //如果查询成功，直接返回结果集
+        if($result && mysqli_num_rows($result)>0){
+            //先声明一个空数组
+            $arr = array();
+            $arr= mysqli_fetch_all($result,MYSQLI_ASSOC);
+            //返回数组
+            return $arr;
+        }
+        //查询失败返回false
+        return false;  
+    }
+
+/*
+ *  专业执行  insert delete update 函数
+ *
+ *  @param $sql 执行insert delete update 的sql语句
+ *  
+ *  @retrun delete update 成功返回真  失败返回假
+ *
+ *  @return  insert 成功返回自增id,失败返回假
+ *
+ *
+ *
+ * */
+
+function execute($sql){
+    $result = mysqli_query($sql);
+    if($result && mysqli_affected_rows($link)>0){
+        //如果有自增id 则返回id
+        if(mysqli_insert_id($link)){
+            return mysqli_insert_id($link);
+        }
+        return true;
+    }
+
+    return false;
+}
+
