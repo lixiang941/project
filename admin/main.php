@@ -29,7 +29,7 @@ div.main-order{ line-height:30px; padding:10px 0 0 0;}
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="main">
   <tr>
     <td colspan="2" align="left" valign="top">
-    <span class="time"><strong>上午好！<?php echo @$_SESSION['admin']['name']?></strong><u>[超级管理员]</u></span>
+    <span class="time"><strong>上午好！<?php echo @$_SESSION['admin']['name']?></strong><u>[<?php echo  $_SESSION['admin']['role']==2?'超级管理员':'管理员'?>]</u></span>
     <div class="top"><span class="left">您上次的登灵时间：<?php echo date('Y-m-d H:i:s')?>  登录IP：<?php echo $_SERVER['SERVER_ADDR']?> &nbsp;&nbsp;&nbsp;&nbsp;如非您本人操作，请及时</span><a href="index.html" target="mainFrame" onFocus="this.blur()">更改密码</a></div>
     <div class="sec">这是您第<span class="num">1000000000000</span>次,登录！</div>
     </td>

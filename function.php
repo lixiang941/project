@@ -171,8 +171,11 @@ function getUrl($img_name,$pre=''){
  * @return 成功返回数组列表 失败返回false
  *
  * */
-    function query($sql){
-        $result =mysqli_query($link,$sql);
+function query($link,$sql){
+   // echo $sql;
+    //var_dump($link);
+    $result =mysqli_query($link,$sql);
+   // var_dump($result);
         //如果查询成功，直接返回结果集
         if($result && mysqli_num_rows($result)>0){
             //先声明一个空数组
@@ -198,8 +201,8 @@ function getUrl($img_name,$pre=''){
  *
  * */
 
-function execute($sql){
-    $result = mysqli_query($sql);
+function execute($link,$sql){
+    $result = mysqli_query($link,$sql);
     if($result && mysqli_affected_rows($link)>0){
         //如果有自增id 则返回id
         if(mysqli_insert_id($link)){

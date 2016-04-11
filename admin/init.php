@@ -14,7 +14,7 @@ include ADMIN_PATH.'../init.php';
 
 
 //判断session
-/*$filename = basename($_SERVER['SCRIPT_NAME']);
+$filename = basename($_SERVER['SCRIPT_NAME']);
 $allow_files = array(
         'login.php',
         'dologin.php'
@@ -25,6 +25,5 @@ if(!in_array($filename,$allow_files)){
             header('location:'.ADMIN_URL.'login.php');
     }
 }
- */
-
+ 
 
