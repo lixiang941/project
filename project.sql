@@ -17,3 +17,12 @@ CREATE TABLE IF NOT EXISTS `pro_user`(
 
 -- 添加超级管理员
 INSERT INTO pro_user VALUES(NULL,'admin',md5('123456'),1,2,0);
+
+-- 创建商品分类表 pro_category
+CREATE TABLE IF NOT EXISTS `pro_category`(
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) ,
+    pid INT UNSIGNED,
+    path VARCHAR(255),
+    display INT NOT NULL DEFAULT 1 -- 1显示 2 隐藏
+)ENGINE=MyISAM DEFAULT CHARSET=utf8;
