@@ -160,6 +160,28 @@ function getUrl($img_name,$pre=''){
     return $img_url;
 
 }
+/*
+ * 拼接PATH函数
+ * @param $img_name 图片名
+ *
+ * @param $pre  前缀
+ *  
+ * @return 返回图片拼接好路径PATH
+ *
+ * @author MartinLee lixiang@lampbrother.net
+ *
+ * */
+
+function getPath($img_name,$pre=''){
+    //拼接url
+    $img_path = PATH.'uploads/';
+    $img_path .=substr($img_name,0,4).'/';
+    $img_path .=substr($img_name,4,2).'/';
+    $img_path .=substr($img_name,6,2).'/';
+    $img_path .=$pre.$img_name;
+    return $img_path;
+
+}
 
 /*
  *  查询数据表
