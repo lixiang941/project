@@ -1,3 +1,6 @@
+<?php 
+    include './init.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,7 +27,13 @@
                     <div class="hrtop">
                     <div class="hrl fl">
                         <div><a href="#" class="fl">我的H&M</a></div>
-                        <div><a href="#" class="fr">登录/加入</a></div>
+                        <div>
+                                <?php if(empty($_SESSION['home'])){?>
+                                <a href="login.php" class="fl">登录</a><a href="register.php" class="fl">加入</a>
+                                <?php }else{ ?>
+                               <font color="blue"> <?php echo $_SESSION['home']['name']?></font><a href="action.php?a=loginout">退出</a>
+                                <?php } ?>
+                            </div>
                         
                         <div class="clear"></div>
                     </div>

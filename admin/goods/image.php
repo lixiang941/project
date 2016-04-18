@@ -93,14 +93,14 @@ $img_url = getUrl($filename,'/50_');
         <td align="center" valign="middle" class="borderright borderbottom"><?php echo $value['is_face']==1?'<a href="action.php?a=is_face&gid='.$gid.'&gname='.$gname.'&id='.$value['id'].'"><font color="green" size="6">√</font></a>':'<a href="action.php?a=is_face&gid='.$gid.'&gname='.$gname.'&id='.$value['id'].'"><font color="red" size="5">×</font></a>'?></td>
    
         
-        <td align="center" valign="middle" class="borderbottom"><a href="add.html" target="mainFrame" onFocus="this.blur()" class="add">删除</a></td>
+        <td align="center" valign="middle" class="borderbottom"><a href="action.php?a=delimg&iid=<?php echo $value['id']?>&is_face=<?php echo $value['is_face']?>&gid=<?php echo $gid?>" target="mainFrame" onFocus="this.blur()" class="add">删除</a></td>
       </tr>
       <?php } ?>
       <?php } ?>
     </table></td>
     </tr>
   <tr>
-    <td align="left" valign="top" class="fenye">11 条数据 1/1 页&nbsp;&nbsp;<a href="#" target="mainFrame" onFocus="this.blur()">首页</a>&nbsp;&nbsp;<a href="#" target="mainFrame" onFocus="this.blur()">上一页</a>&nbsp;&nbsp;<a href="#" target="mainFrame" onFocus="this.blur()">下一页</a>&nbsp;&nbsp;<a href="#" target="mainFrame" onFocus="this.blur()">尾页</a></td>
+    
   </tr>
 </table>
 </body>

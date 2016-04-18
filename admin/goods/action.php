@@ -221,4 +221,94 @@ switch($a){
     }
         break;
 
+    case 'edit':
+        echo '<pre>';
+        var_dump($_POST);
+        $gid= $_POST['gid'];
+        $name= $_POST['name'];
+        $cate_id=$_POST['cate_id'];
+        $price = $_POST['price'];
+        $stock = $_POST['stock'];
+        $describe = $_POST['describe'];
+        $sql="UPDATE ".PRE."goods SET name='{$name}',cate_id={$cate_id},price='{$price}',stock={$stock},`describe`='{$describe}' WHERE id={$gid}";
+       // echo $sql;exit;
+        $result = execute($link,$sql);
+        if($result){
+            redirect('修改成功','./index.php');
+        }else{
+            redirect('修改失败','./edit.php?gid='.$gid);
+        }
+                    
+
+        break;
+    case 'status':
+        var_dump($_GET);
+        $gid = $_GET['gid'];
+        $status = $_GET['status'];
+        $sql="UPDATE ".PRE."goods SET `status`={$status} WHERE id={$gid}";
+        $result = execute($link,$sql);
+        if($result){
+            header("location:index.php");
+        }else{
+        
+            header("location:index.php");
+        }
+        break;
+    case 'is_hot':
+       // var_dump($_GET);
+        $gid = $_GET['gid'];
+        $is_hot = $_GET['is_hot'];
+        $sql="UPDATE ".PRE."goods SET `is_hot`={$is_hot} WHERE id={$gid}";
+        $result = execute($link,$sql);
+        if($result){
+            header("location:index.php");
+        }else{
+        
+            header("location:index.php");
+        }
+        break;
+    case 'is_best':
+       // var_dump($_GET);
+        $gid = $_GET['gid'];
+        $is_best = $_GET['is_best'];
+        $sql="UPDATE ".PRE."goods SET `is_best`={$is_best} WHERE id={$gid}";
+        $result = execute($link,$sql);
+        if($result){
+            header("location:index.php");
+        }else{
+        
+            header("location:index.php");
+        }
+        break;
+        case 'is_new':
+       // var_dump($_GET);
+        $gid = $_GET['gid'];
+        $is_new = $_GET['is_new'];
+        $sql="UPDATE ".PRE."goods SET `is_new`={$is_new} WHERE id={$gid}";
+        $result = execute($link,$sql);
+        if($result){
+            header("location:index.php");
+        }else{
+        
+            header("location:index.php");
+        }
+        break;
+    case 'delimg':
+       // var_dump($_GET);
+        $iid = $_GET['iid'];
+        $is_face = $_GET['is_face'];
+        $gid = $_GET['gid'];
+        if($is_face ==1){
+            redirect('你是封皮不能删除','./image.php?gid='.$gid);
+            exit;
+        }        
+        $sql="DELETE FROM ".PRE."image WHERE id={$iid}";
+        $result = query($link,$sql);
+        if($result){
+            header('location:image.php?gid='.$gid);
+        }else{
+            
+            header('location:image.php?gid='.$gid);
+        }
+        break;
 }
